@@ -1,1 +1,3 @@
 UnifiedSwitch.ahk
+dependencies/*
+!dependencies/.gitkeep 
