@@ -1,82 +1,107 @@
 # UnifiedSwitch
 
-Instant Logitech MX keyboard + mouse + monitor switching between multiple PCs for power users
+Switch your Logitech MX keyboard, mouse, and monitor between multiple PCs instantly.
+Just press Win + 1, Win + 2, or Win + 3 and everything jumps to the selected PC.
+
+No more manual pairing to do!
+Install once -> it just works forever.
 
 ## Installation
 
-1. [Download latest release](https://github.com/tommaso-zambon/unified-switch/releases/latest)
-2. Put these two files into the `dependencies/` folder:
+1. [Download latest version](https://github.com/tommaso-zambon/unified-switch/releases/latest)
+2. Put the required files in the right folder<br>
+   Inside the UnifiedSwitch folder, open the `dependencies/` folder and place these two files inside:
    - [hidapitester.exe](https://github.com/todbot/hidapitester/releases/latest)
-   - [ControlMyMonitor.exe](https://www.nirsoft.net/utils/control_my_monitor.html) (optional, only needed for monitor switching)
-3. Run as admin `install.bat` -> it creates a startup task
-4. Reboot or run `UnifiedSwitch.exe` once -> Done forever!
+   - [ControlMyMonitor.exe](https://www.nirsoft.net/utils/control_my_monitor.html) (optional, only needed if you want your monitor to switch automatically)
+3. Install it<br>
+   Right-click `install.bat` -> run as administrator.
 
-`uninstall.bat` removes everything cleanly.
+   - This makes UnifiedSwitch start automatically each time your PC starts.
 
-> [!IMPORTANT]
-> Install this repo to every device you want to use this with.
+4. Restart your PC<br>
+   (or run UnifiedSwitch.exe manually once)
 
-## Features
+That's it. You're done! ✔<br>
+Do the same on every PC you want to switch between.
 
-press `⊞ Win + 1`, `⊞ Win + 2`, `⊞ Win + 3`
+To remove it completely, run `uninstall.bat`.
 
-each shortcut will switch keyboard and mouse channel:
+## How to Use
 
-- `Win+1` switches keyboard and mouse channels to 1
-- `Win+2` switches keyboard and mouse channels to 2
-- `Win+3` switches keyboard and mouse channels to 3
+Press:
 
-if `multiMonitor` property in `config.ini` file is set to `0` it will also switch monitor source automatically.
+- `⊞ Win + 1` -> switch everything to PC 1
 
-> [!NOTE]
-> if you use a multiple screen setup then in config.ini change `multiMonitor` from `0` to `1`. This will disable monitor source switching.<br>
-> If it does not work your monitor isn't supporting DDC/CI operations.
+- `⊞ Win + 2`-> switch everything to PC 2
 
-## How to find your monitor input codes
+- `⊞ Win + 3` -> switch everything to PC 3
 
-Do this **once per Monitor**, you'll never need to do it again.
+This will:
 
-1. Open **PowerShell** (no admin needed)
-2. Paste and run this one-liner
+✔ switch your **keyboard**<br>
+✔ switch your **mouse**<br>
+✔ switch your **monitor input** (optional)<br>
+
+### Monitor switching can be turned on/off
+
+Inside `config.ini`:
+
+- `multiMonitor = 0`-> switch monitor input **automatically**
+
+- `multiMonitor = 1` -> **do not** switch monitor input (good for multi-monitor setups)
+
+If the monitor never changes input, your screen does not support DDC/CI.
+
+## One-Time Setup: Find Your Monitor Input Numbers
+
+Do this only **once per Monitor**.
+
+1. Open **PowerShell** (no administrator rights needed)
+2. Copy & paste this command:
 
 ```powershell
 1..20 | ForEach-Object { Write-Host "Testing input $_ (watch monitor – Ctrl+C to stop)" -ForegroundColor Yellow; & "C:\Macros\UnifiedSwitch\dependencies\ControlMyMonitor.exe" /SetValue "\\.\DISPLAY1\Monitor0" 60 $_; Start-Sleep -Seconds 2 }
 ```
 
-3. When source switch write down the number shown (examples)
+Your screen will change input a few times.
+
+3. When it switches, write down the number you saw<br>
+   Examples:
 
    - input 5 => HDMI-1
    - input 6 => HDMI-2
-   - input 17 => DP-1
+   - input 17 => DisplayPort
 
-4. Open config.ini and put them here:
+4. Add these numbers to your config.ini
 
 ```ini
 [SOURCES]
-device1=5    ; your number for HDMI-1
-device2=6    ; your number for HDMI-2
-device3=17   ; your number for DP-1
+device1=5    ; HDMI-1
+device2=6    ; HDMI-2
+device3=17   ; DisplayPort
 ```
 
-That's it. Save and restart process like in the image (use task manager)
+Save it. Restart the UnifiedSwitch process (or reboot).
+
+Now `Win+1` / `Win+2` / `Win+3` will switch PC and screen perfectly and instantly.
 
 ![how ro restart process](images/image-1.png)<br>
 -> press Win+1 / Win+2 / Win+3. Everything switches perfectly forever.
 
 ## Supported Connections
 
-| Device                  | Connection             | Easy-Switch works? |
-| ----------------------- | ---------------------- | ------------------ |
-| MX Keys / MX Mechanical | **Bluetooth direct**   | YES                |
-| MX Keys / MX Mechanical | **Logi Bolt receiver** | NOT TESTED         |
-| MX Master 3 / 3S        | **Bluetooth direct**   | YES                |
-| MX Master 3 / 3S        | **Logi Bolt receiver** | NO                 |
+| Device                  | Connection type | Works with UnifiedSwitch?   |
+| ----------------------- | --------------- | --------------------------- |
+| MX Keys / MX Mechanical | **Bluetooth**   | ✔ Works perfectly           |
+| MX Keys / MX Mechanical | Logi Bolt       | Not tested                  |
+| MX Master 3 / 3S        | **Bluetooth**   | ✔ Works perfectly           |
+| MX Master 3 / 3S        | Logi Bolt       | ❌ Does not switch channels |
 
 > [!TIP]
 > Use **direct Bluetooth pairing** on every PC (no dongle).  
 > You get lower latency, longer battery life, and 100 % working channel switching with this script.
 
-## Credits & huge thanks
+## huge thanks
 
-todbot/hidapitester<br>
-nirsoft/ControlMyMonitor
+- todbot/hidapitester
+- nirsoft/ControlMyMonitor
