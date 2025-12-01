@@ -1,4 +1,4 @@
-# UnifiedSwitch
+# UnifiedSwitch ![version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 
 Switch your Logitech MX keyboard, mouse, and monitor between multiple PCs instantly.
 Just press Win + 1, Win + 2, or Win + 3 and everything jumps to the selected PC.
@@ -6,25 +6,23 @@ Just press Win + 1, Win + 2, or Win + 3 and everything jumps to the selected PC.
 No more manual pairing to do!
 Install once -> it just works forever.
 
+## What's new in v2.0.0
+
+- fast 10x 500ms to 10ms
+- Smart Auto-Start: Script automatically registers itself in Windows Startup folder—no Task Scheduler needed
+- Dynamic Device Discovery: C utility auto-generates config with detected Logitech keyboard/mouse paths
+
 ## Installation
 
 1. [Download latest version](https://github.com/tommaso-zambon/unified-switch/releases/latest)
 2. Put the required files in the right folder<br>
-   Inside the UnifiedSwitch folder, open the `dependencies/` folder and place these two files inside:
-   - [hidapitester.exe](https://github.com/todbot/hidapitester/releases/latest)
+   Inside the UnifiedSwitch folder, open the `dependencies/` folder and place this file:
    - [ControlMyMonitor.exe](https://www.nirsoft.net/utils/control_my_monitor.html) (optional, only needed if you want your monitor to switch automatically)
-3. Install it<br>
-   Right-click `install.bat` -> run as administrator.
-
-   - This makes UnifiedSwitch start automatically each time your PC starts.
-
-4. Restart your PC<br>
-   (or run UnifiedSwitch.exe manually once)
-
-That's it. You're done! ✔<br>
-Do the same on every PC you want to switch between.
-
-To remove it completely, run `uninstall.bat`.
+3. Create your `config.ini` file<br>
+   Right-click `Configure.exe`, it will do it automatically
+4. Run `UnifiedSwitch.exe` (just this time!)<br>
+   That's it. You're done! ✔<br>
+   Do the same on every PC you want to switch between.
 
 ## How to Use
 
@@ -81,21 +79,12 @@ device2=6    ; HDMI-2
 device3=17   ; DisplayPort
 ```
 
-Save it. Restart the UnifiedSwitch process (or reboot).
-
+Save it.
 Now `Win+1` / `Win+2` / `Win+3` will switch PC and screen perfectly and instantly.
-
-![how ro restart process](images/image-1.png)<br>
--> press Win+1 / Win+2 / Win+3. Everything switches perfectly forever.
 
 ## Supported Connections
 
-| Device                  | Connection type | Works with UnifiedSwitch?   |
-| ----------------------- | --------------- | --------------------------- |
-| MX Keys / MX Mechanical | **Bluetooth**   | ✔ Works perfectly           |
-| MX Keys / MX Mechanical | Logi Bolt       | Not tested                  |
-| MX Master 3 / 3S        | **Bluetooth**   | ✔ Works perfectly           |
-| MX Master 3 / 3S        | Logi Bolt       | ❌ Does not switch channels |
+TODO
 
 > [!TIP]
 > Use **direct Bluetooth pairing** on every PC (no dongle).  
@@ -103,5 +92,4 @@ Now `Win+1` / `Win+2` / `Win+3` will switch PC and screen perfectly and instantl
 
 ## huge thanks
 
-- todbot/hidapitester
 - nirsoft/ControlMyMonitor

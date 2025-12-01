@@ -1,7 +1,12 @@
-.gitattributes export-ignore
-.gitignore     export-ignore
-README.md      export-ignore
-LICENSE        export-ignore
+.gitattributes    export-ignore
+.gitignore        export-ignore
+README.md         export-ignore
+LICENSE           export-ignore
 
-images/         export-ignore
-dependencies/** export-ignore
+images/           export-ignore
+dependencies/**   export-ignore
+
+UnifiedSwitch.ahk export-ignore
+LogiSwitch.c      export-ignore
+Configure.c       export-ignore
+config.ini        export-ignore

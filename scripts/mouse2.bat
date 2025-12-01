@@ -1,5 +1,0 @@
-@echo off & setlocal EnableDelayedExpansion
-set "cfg=%~dp0..\config.ini"
-for /f "usebackq tokens=2 delims== " %%A in (`findstr /i "^mouse=" "%cfg%" 2^>nul`) do set "id=%%A"
-if not defined id exit /b 1
-"%~dp0..\dependencies\hidapitester.exe" --vidpid %id% --usage 0x0202 --usagePage 0xFF43 --open --length 20 --send-output 0x11,0x00,0x0A,0x1E,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00 2>nul

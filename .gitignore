@@ -1,3 +1,4 @@
-UnifiedSwitch.ahk
 dependencies/*
-!dependencies/.gitkeep 
+!dependencies/.gitkeep
+
+config.ini
