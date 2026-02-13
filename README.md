@@ -1,4 +1,4 @@
-# UnifiedSwitch ![version](https://img.shields.io/badge/version-2.1.0-blue.svg)
+# UnifiedSwitch ![version](https://img.shields.io/badge/version-2.1.1-blue.svg)
 
 Switch your Logitech MX keyboard, mouse, and monitor between multiple PCs instantly.
 Just press Win + 1, Win + 2, or Win + 3 and everything jumps to the selected PC.
@@ -6,10 +6,10 @@ Just press Win + 1, Win + 2, or Win + 3 and everything jumps to the selected PC.
 No more manual pairing to do!
 Install once -> it just works forever.
 
-## What's new in v2.1.0
+## What's new in v2.1.1
 
 - Wizard configuration
-- Good bye AutoHotkey! everything is pure C, speedy fast!
+- Goodbye AutoHotkey! everything is pure C, speedy fast!
 - RAM comsuption is now less of 1MB
 - Supported new shortcuts
 
@@ -95,6 +95,10 @@ Now `Win+1` / `Win+2` / `Win+3` will switch PC and Logitech channels instantly.
 
 > [!NOTE]
 > While the switch logic is written in portable C, the implementation uses Windows HID APIs. It could work on other OSes with modification, but I won't be doing that work.
+
+### for devs && contributions
+
+If you would like to contribute, here are [docs](TECHNICAL_README.md)
 
 ## huge thanks
 
