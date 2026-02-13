@@ -1,4 +1,4 @@
-# UnifiedSwitch ![version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+# UnifiedSwitch ![version](https://img.shields.io/badge/version-2.1.0-blue.svg)
 
 Switch your Logitech MX keyboard, mouse, and monitor between multiple PCs instantly.
 Just press Win + 1, Win + 2, or Win + 3 and everything jumps to the selected PC.
@@ -6,20 +6,26 @@ Just press Win + 1, Win + 2, or Win + 3 and everything jumps to the selected PC.
 No more manual pairing to do!
 Install once -> it just works forever.
 
-## What's new in v2.0.0
+## What's new in v2.1.0
 
-- fast 10x 500ms to 10ms
-- Smart Auto-Start: Script automatically registers itself in Windows Startup folder—no Task Scheduler needed
-- Dynamic Device Discovery: C utility auto-generates config with detected Logitech keyboard/mouse paths
+- Wizard configuration
+- Good bye AutoHotkey! everything is pure C, speedy fast!
+- RAM comsuption is now less of 1MB
+- Supported new shortcuts
+
+## Supported Connections
+
+Logi Bolt is not supported right now, just direct bluetooth works.
+As using Bolt adapter is actually faster than using bluetooth (and works on BIOS) i will try make switching possible
 
 ## Installation
 
 1. [Download latest version](https://github.com/tommaso-zambon/unified-switch/releases/latest)
-2. Put the required files in the right folder<br>
-   Inside the UnifiedSwitch folder, open the `dependencies/` folder and place this file:
-   - [ControlMyMonitor.exe](https://www.nirsoft.net/utils/control_my_monitor.html) (optional, only needed if you want your monitor to switch automatically)
-3. Create your `config.ini` file<br>
-   Right-click `Configure.exe`, it will do it automatically
+2. Execute `Configure.exe`<br>
+   And follow wizard, it will create your `config.ini` file<br>
+3. Put the required file in the right folder (optional, only needed if you want your monitor to switch automatically)<br>
+   - Inside the UnifiedSwitch folder, open the `dependencies/` folder and place this file: [ControlMyMonitor.exe](https://www.nirsoft.net/utils/control_my_monitor.html)
+   - [Follow this guide](#one-time-setup-find-your-monitor-input-numbers)
 4. Run `UnifiedSwitch.exe` (just this time!)<br>
    That's it. You're done! ✔<br>
    Do the same on every PC you want to switch between.
@@ -34,6 +40,8 @@ Press:
 
 - `⊞ Win + 3` -> switch everything to PC 3
 
+> New shortcuts supported, you can select them from wizard
+
 This will:
 
 ✔ switch your **keyboard**<br>
@@ -41,6 +49,8 @@ This will:
 ✔ switch your **monitor input** (optional)<br>
 
 ### Monitor switching can be turned on/off
+
+> you can follow wizard guide in Configure.exe instead
 
 Inside `config.ini`:
 
@@ -65,10 +75,9 @@ Your screen will change input a few times.
 
 3. When it switches, write down the number you saw<br>
    Examples:
-
    - input 5 => HDMI-1
    - input 6 => HDMI-2
-   - input 17 => DisplayPort
+   - input 15 => DisplayPort
 
 4. Add these numbers to your config.ini
 
@@ -76,19 +85,16 @@ Your screen will change input a few times.
 [SOURCES]
 device1=5    ; HDMI-1
 device2=6    ; HDMI-2
-device3=17   ; DisplayPort
+device3=   ; (OPTIONAL)
 ```
 
+`device1` is linked to logitech channel 1, so at win+1 source switches there, same for `device2` and `device3`, but with channel 2 and 3
+
 Save it.
-Now `Win+1` / `Win+2` / `Win+3` will switch PC and screen perfectly and instantly.
+Now `Win+1` / `Win+2` / `Win+3` will switch PC and Logitech channels instantly.
 
-## Supported Connections
-
-TODO
-
-> [!TIP]
-> Use **direct Bluetooth pairing** on every PC (no dongle).  
-> You get lower latency, longer battery life, and 100 % working channel switching with this script.
+> [!NOTE]
+> While the switch logic is written in portable C, the implementation uses Windows HID APIs. It could work on other OSes with modification, but I won't be doing that work.
 
 ## huge thanks
 

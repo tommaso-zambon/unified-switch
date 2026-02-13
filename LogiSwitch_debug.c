@@ -6,7 +6,7 @@
 /*
  * UnifiedSwitch - Bluetooth Channel Switcher
  * 
- * ADDING NEW DEVICES (if you would like to help):
+ * ADDING NEW DEVICES:
  * 1. Find your device PID in Configure_debug.exe output
  * 2. Test which report ID works using TestKeyboard.exe or TestMouseCol02.exe
  * 3. Add entry to bt_devices[] array below
